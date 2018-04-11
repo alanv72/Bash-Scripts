@@ -14,5 +14,7 @@ Usage:
 > * You can change the crontab line to configure script run interval
 > * To view the banned hackers' IPs in the script path:
 >   `# cat hacker.iplist`
+>   or
+>   `# cat /etc/hosts.deny`
 
 That's it.

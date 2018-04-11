@@ -2,9 +2,6 @@
 
 # Denven modified this script on March 13, 2018
 
-#cat /var/log/secure|awk '/Failed/{print $(NF-3)}'|sort|uniq -c|awk '{print $2 "\t" "tried times: "$1;}' > /root/ssh_secure/failed_iplist
-
-# divide this commands combiantion into several lines
 # 1、strip the IP from the log message and sort the same ip lines together
 cat /var/log/secure|awk '/Failed/{print $(NF-3)}'|sort > ip.sorted.tmp
 
@@ -38,5 +35,5 @@ done
 # 4、remove the temp files
 rm -f *.tmp
 
-# to clear mail file content in case of errors accumulation
+# to clear mail file content in case of some errors accumulation
 echo > /var/spool/mail/root
