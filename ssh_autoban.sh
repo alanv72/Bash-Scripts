@@ -35,5 +35,3 @@ done
 # 4、remove the temp files
 rm -f *.tmp
 
-# to clear mail file content in case of some errors accumulation
-echo > /var/spool/mail/root
