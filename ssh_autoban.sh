@@ -21,7 +21,7 @@ TRIED_TIMES="5"
 sed s/[[:space:]]//g hacker.iplist > hacker.iplist.tmp
 for i in `cat hacker.iplist.tmp`
 do
-    IP=`echo $i |awk -F"\t" '{print $1}'`
+    IP=`echo $i |awk -Ft '{print $1}'`
     NUM=`echo $i |awk -F: '{print $2}'`
     if [ $NUM -gt $TRIED_TIMES ]; then
         grep $IP /etc/hosts.deny > /dev/null
