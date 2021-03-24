@@ -1,4 +1,6 @@
 # How to install docker on Oracle Linux 7.9?
+
+## My Installation
 As Oracle Linux is a clone of RHEL, so the applications are compitible with CentOS packages.
 
 I had an error to install it when following the docker official doc: https://docs.docker.com/engine/install/centos/, 
@@ -78,3 +80,27 @@ Finnaly I was able to install docker after fixing the dependencies.
 `$ sudo yum install docker-ce docker-ce-cli containerd.io -y`
 
 Then, we can use a script to install by one-time execution the [shell script file](./install_docker_on_oracle_linux_7.9.sh) here.
+
+
+## Oracle official guide
+I found anther guide from oracle official website.
+https://docs.huihoo.com/oracle/linux/7/E87205/html/section_install_upgrade_yum_docker.html
+
+If your system is registered with ULN, enable the ol7_x86_64_addons channel.
+
+If you use the Oracle Linux yum server, enable the ol7_addons channel. You can do this easily using yum-config-manager:
+
+`# yum-config-manager --enable ol7_addons`
+Alternatively, edit the /etc/yum.repos.d/public-yum-ol7.repo file to set the ol7_addons enabled option to 1, for example:
+
+[ol7_addons]
+name=Oracle Linux $releasever Add ons ($basearch)
+baseurl=http://yum.oracle.com/repo/OracleLinux/OL7/addons/$basearch/
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+gpgcheck=1
+enabled=1
+You can download an up-to-date version of this file from http://yum.oracle.com/public-yum-ol7.repo, if required.
+
+Install the docker-engine package.
+
+`# yum install docker-engine
