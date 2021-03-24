@@ -1,20 +1,7 @@
 # Readme
 
-This script is used to ban malicious IPs trying to login your Linux server vis ssh or other ways.
+> This repo keeps some bash scripts I wrote to fix some issues at work or spare time.
+## Scripts List
 
-Usage:
-
-Download the script file into your server, enter the path and execute the following commands.
-
-``` shell
-# chmod +x ssh_autoban.sh
-# echo "*/5 * * * * sh /your_path/ssh_autoban.sh" >> /var/spool/cron/root
-```
-> * Do change the path string where your ssh_autoban file locates 
-> * You can change the crontab line to configure script run interval
-> * To view the banned hackers' IPs in the script path:
->   `# cat hacker.iplist`
->   or
->   `# cat /etc/hosts.deny`
-
-That's it.
+1. [`ssh_autoban`](./ssh_autoban.sh):  [Run to ban the IP of hackers' bruce-force attack on server](./ssh_autoban.md).
+2. [`install_docker_on_oracle_linux_7.9`](./install_docker_on_oracle_linux_7.9.sh): Install docker on Oracle Linux other than using the not workable official guide.
