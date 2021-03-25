@@ -5,8 +5,9 @@ As Oracle Linux is a clone of RHEL, so the applications are compitible with Cent
 
 I had an error to install it when following the docker official doc: https://docs.docker.com/engine/install/centos/, 
 
+`$ sudo yum install docker-ce docker-ce-cli containerd.io`
+
 ```shell
-$ sudo yum install docker-ce docker-ce-cli containerd.io
 Loaded plugins: langpacks, ulninfo
 https://download.docker.com/linux/centos/7Server/x86_64/stable/repodata/repomd.xml: [Errno 14] HTTPS Error 404 - Not Found
 Trying other mirror.
@@ -48,13 +49,12 @@ https://download.docker.com/linux/centos/7Server/x86_64/stable/repodata/repomd.x
 
 The reason is that the added docker-ce repo is broken, (URL in /etc/yum.repos.d/docker-ce.repo, like https://download.docker.com/linux/centos/7/$basearch/stable is not valid to get the packages. This issue is disccused here: https://github.com/docker/for-linux/issues/1111
 
-Fix: Use Centos 7 repo url to replace it,
+Fix: Use Centos 7 repo url to replace it as following:
 
-```shell
-$ sudo sed -i 's/$releasever/7/g' /etc/yum.repos.d/docker-ce.repo
-```
+`$ sudo sed -i 's/$releasever/7/g' /etc/yum.repos.d/docker-ce.repo`
 
 After fixed the repo issue, I came into another dependency error:
+
 ```shell
 $ sudo yum install docker-ce docker-ce-cli containerd.io
 
@@ -91,16 +91,20 @@ If your system is registered with ULN, enable the ol7_x86_64_addons channel.
 If you use the Oracle Linux yum server, enable the ol7_addons channel. You can do this easily using yum-config-manager:
 
 `# yum-config-manager --enable ol7_addons`
-Alternatively, edit the /etc/yum.repos.d/public-yum-ol7.repo file to set the ol7_addons enabled option to 1, for example:
 
+Alternatively, edit the `/etc/yum.repos.d/public-yum-ol7.repo` file to set the ol7_addons enabled option to 1, for example:
+
+```
 [ol7_addons]
 name=Oracle Linux $releasever Add ons ($basearch)
 baseurl=http://yum.oracle.com/repo/OracleLinux/OL7/addons/$basearch/
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
 gpgcheck=1
 enabled=1
+```
+
 You can download an up-to-date version of this file from http://yum.oracle.com/public-yum-ol7.repo, if required.
 
 Install the docker-engine package.
 
-`# yum install docker-engine
+`# yum install docker-engine`
