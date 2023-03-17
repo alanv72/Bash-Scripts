@@ -2,7 +2,7 @@
 
 # Tested on Oracle Linux 7.9, 24th, March 2021
 
-sudo yum install -y yum-utils
+sudo yum install -y yum-utils libseccomp
 sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
